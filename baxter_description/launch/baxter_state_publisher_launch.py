@@ -13,11 +13,12 @@ def generate_launch_description():
         get_package_share_directory('baxter_description'),
         'urdf',
         'baxter.urdf.xacro')
+     
 
     rsp = Node(package='robot_state_publisher',
             executable='robot_state_publisher',
             name='robot_state_publisher',
             output='screen',
-            parameters=[{'robot_description': xacro.process(urdf)}])
+            parameters=[{'robot_description': xacro.process_file(urdf).toxml()}])
 
     return LaunchDescription([GroupAction([PushRosNamespace('robot'), rsp])])
