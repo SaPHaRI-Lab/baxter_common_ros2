@@ -1,0 +1,31 @@
+-----------------------------------------
+# Using the Baxter Bridge Starting Here #
+-----------------------------------------
+
+#Need a Total of Three Terminals
+1. ROS1 Enviroment
+	source /opt/ros/noetic/setup.bash
+	source ~/ros_ws/devel/setup.bash
+# This start the master either on the robot or the Gazebo
+# Gazebo
+	roslaunch baxter_gazebo baxter_world.launch
+# ssh
+	 cd ros_ws
+ 	./baxter.sh
+
+2. ROS2 Enviroment
+
+	source /opt/ros/noetic/setup.bash 
+	source ~/ros2_humble/install/setup.bash
+
+# I put the brigde seperate because I was debugging. When I do this on the claire it will be in the same file. 
+
+	source ~/bridge_ws/install/setup.bash 
+
+# WHEN USING VIRTUAL ROBOT use_baxter_description:=False
+# WHEN USING REAL ROBOT use_baxter_description:=True
+	ros2 launch baxter_bridge baxter_bridge_launch.py use_baxter_description:=False
+
+3. Running the Code from ROS1
+
+#Just run the code after sourcing the respective areas.
